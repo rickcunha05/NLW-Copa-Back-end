@@ -2,10 +2,9 @@ import Fastify from "fastify";
 import cors from "@fastify/cors"
 import { z } from 'zod'
 import { PrismaClient } from '@prisma/client'
-import ShortUniqueI from 'short-unique-id'
 import ShortUniqueId from "short-unique-id";
 
-//tratamento de log para saber todas as querys executadas no banco
+//tratamento de log para saber todas as query executadas no banco
 const prisma = new PrismaClient({
   log: ['query']
 })
@@ -17,7 +16,7 @@ async function bootstrap() {
   await fastify.register(cors, {
     origin: true,
   })
-  //Inicio bloco de codigos referente ao  bolão
+  //Inicio bloco de códigos referente ao  bolão
   fastify.get('/pools/count', async () => { //Contagem de bolão criadas
     const count = await prisma.pool.count()
 
@@ -29,7 +28,7 @@ async function bootstrap() {
     })
 
     const { title } = createPoolBody.parse(request.body)
-    const generate = new ShortUniqueId({ length: 6 }) //Geração do codigo unico do bolão
+    const generate = new ShortUniqueId({ length: 6 }) //Geração do código único do bolão
     const code = String(generate()).toUpperCase()
 
     await prisma.pool.create({
