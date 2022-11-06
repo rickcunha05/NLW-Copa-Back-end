@@ -27,7 +27,7 @@ async function main() {
     await prisma.game.create({
         data: {
             date: '2022-11-02T12:00:00.866Z',
-            firsTeamCountryCode: 'DE',
+            firstTeamCountryCode: 'DE',
             secondTeamCountryCode: 'BR',
 
         }
@@ -35,12 +35,12 @@ async function main() {
     await prisma.game.create({
         data: {
             date: '2022-11-03T14:00:00.866Z',
-            firsTeamCountryCode: 'BR',
+            firstTeamCountryCode: 'BR',
             secondTeamCountryCode: 'AR',
 
             guesses: {
                 create: {
-                    firsTeamPoints: 3,
+                    firstTeamPoints: 3,
                     secondTeamPoints: 1,
 
                     participant: {
